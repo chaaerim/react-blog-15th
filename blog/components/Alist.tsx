@@ -1,15 +1,19 @@
 import { postList } from "../store/recoil";
-import { useRecoilState } from "recoil";
+import { useRecoilValue } from "recoil";
 import styled from "styled-components";
 import Link from "next/link";
+
 const Alist = () => {
-  const [posts, _] = useRecoilState(postList);
+  const posts= useRecoilValue(postList);
   return (
     <>
       {posts.map((post, i) => {
         return (
           <Wrapper>
-            <Link href="/get/:id">
+            <Link href={{
+              pathname: `/get/${post.id}`,
+              query: {post: JSON.stringify(post)}
+              }}>
               <a>
                 <h3>{post.title}</h3>
               </a>
