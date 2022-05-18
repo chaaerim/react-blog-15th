@@ -1,15 +1,17 @@
-
-import type { AppProps } from 'next/app'
+import type { AppProps } from "next/app";
 import GlobalStyle from "../styles/GlobalStyle";
-import Link from 'next/link';
+import { RecoilRoot } from "recoil";
+
 function MyApp({ Component, pageProps }: AppProps) {
   return (
-      <>
-          <GlobalStyle/>
-          <div>
-              <Component/>
-          </div>
-      </>
-  )
+    <>
+      <RecoilRoot>
+        <GlobalStyle />
+        <div>
+          <Component />
+        </div>
+      </RecoilRoot>
+    </>
+  );
 }
-export default MyApp
+export default MyApp;
