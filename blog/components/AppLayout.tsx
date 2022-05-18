@@ -1,6 +1,6 @@
-import { FC } from "react";
-import styled from "styled-components";
-import Link from "next/link";
+import { FC } from 'react';
+import styled from 'styled-components';
+import Link from 'next/link';
 
 type Props = {
   children: React.ReactNode;
@@ -11,9 +11,7 @@ const AppLayout: FC<Props> = ({ children }) => {
     <>
       <Navbar>
         <Link href="/">
-          <a>
-            <button>홈</button>
-          </a>
+          <button>홈</button>
         </Link>
         <Link href="/post">
           <button>글쓰기</button>
