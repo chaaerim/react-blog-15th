@@ -1,11 +1,7 @@
-import { createGlobalStyle } from 'styled-components';
-import { normalize } from 'styled-normalize';
+import { createGlobalStyle } from "styled-components";
+import { normalize } from "styled-normalize";
 const GlobalStyle = createGlobalStyle`
-  @import url("https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap");
-  :root{
-    --ff-main: "Noto Sans KR", sans-serif;
-  }
-
+  
   ${normalize}
     body {
         margin: 0px;

@@ -19,7 +19,10 @@ const AppLayout: FC<Props> = ({ children }) => {
           <button>글쓰기</button>
         </Link>
         <Link href="/get/3">
-          <button>실제로는 없는 버튼</button>
+          <button>실제로는 없는 버튼(게시글 상세보기)</button>
+        </Link>
+        <Link href="/edit/3">
+          <button>실제로는 없는 버튼(수정하기)</button>
         </Link>
       </Navbar>
       <Container>{children}</Container>

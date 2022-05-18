@@ -1,4 +1,5 @@
 import AppLayout from "../../components/AppLayout";
+import Link from "next/link";
 
 const Get = () => {
   return (
@@ -9,8 +10,16 @@ const Get = () => {
         <h3>게시글 실제로 보는 곳 </h3>
         <div>제목 이랑 시간 등 정보</div>
         <div>상세 내용</div>
-        <button>수정</button>
-        <button>삭제</button>
+        <Link href="/edit/3">
+          <a>
+            <button>수정</button>
+          </a>
+        </Link>
+        <Link href="/">
+          <a>
+            <button>삭제</button>
+          </a>
+        </Link>
       </AppLayout>
     </>
   );
