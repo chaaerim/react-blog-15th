@@ -1,15 +1,18 @@
-import type { NextPage } from 'next'
+import type { NextPage } from "next";
 import Link from "next/link";
+import AppLayout from "../components/AppLayout";
 
 const Home: NextPage = () => {
   return (
+    <>
+      <AppLayout>
+        <div>게시글</div>
+        <div>게시글</div>
+        <div>게시글</div>
+        <div>게시글</div>
+      </AppLayout>
+    </>
+  );
+};
 
-    <h1>
-        <Link href={{ pathname: "get"}}>
-            aa
-        </Link>
-    </h1>
-  )
-}
-
-export default Home
+export default Home;
