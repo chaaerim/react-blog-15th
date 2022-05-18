@@ -10,6 +10,7 @@ const Home: NextPage = () => {
 
   return (
     <>
+      <div>테스트</div>
       <AppLayout>
         <Alist />
       </AppLayout>
