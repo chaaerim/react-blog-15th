@@ -10,9 +10,10 @@ const Post = () => {
           <input type="text" placeholder="글 제목" />
           <textarea name="" id="" placeholder="글 내용"></textarea>
           <button>글 작성</button>
+
         </FromStyle>
         <div>
-          작성 누르면 다시 홈으로 이동하고 작성한 내용은 홈에 적용되어 있음.
+          작성 누르면 다시 홈으로 이동하고 작성한 내용은 홈에 적용되어 있음.;;;
         </div>
       </AppLayout>
     </>
