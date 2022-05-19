@@ -13,8 +13,8 @@ const DetailContent = () => {
   const post = JSON.parse(currentPost);
 
   //console.log
-  console.log(posts[postId]?.id);
-  console.log(postId);
+  // console.log(posts[postId]?.id);
+  // console.log(postId);
 
   const handlePostDelete = useCallback(() => {
     setPosts(posts.filter((post: any) => Number(post.id) !== postId));

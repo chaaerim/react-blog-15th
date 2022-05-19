@@ -37,7 +37,6 @@ const Post = () => {
         date,
       };
       setPostNumber((prev) => prev + 1);
-      console.log(obj);
       setPosts([...posts, obj]);
       setContents('');
       router.push('/');
