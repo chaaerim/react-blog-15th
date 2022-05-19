@@ -1,8 +1,9 @@
-import { createGlobalStyle } from "styled-components";
-import { normalize } from "styled-normalize";
+import { createGlobalStyle } from 'styled-components';
+import { normalize } from 'styled-normalize';
 const GlobalStyle = createGlobalStyle`
   
   ${normalize}
+  
     body {
         margin: 0px;
         background-color: #ffffff;
@@ -13,6 +14,9 @@ const GlobalStyle = createGlobalStyle`
         font-family: 'Noto Sans KR', sans-serif;
         font-size: 10pt;
     }
+      a{
+        text-decoration-line: none;
+      }
     
 `;
 

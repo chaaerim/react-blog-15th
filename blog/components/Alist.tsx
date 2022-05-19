@@ -9,7 +9,7 @@ const Alist = () => {
     <>
       {posts?.map((post) => {
         return (
-          <Wrapper>
+          <Wrapper key={post.id}>
             <Link
               href={{
                 pathname: `/get/${post.id}`,
@@ -21,7 +21,7 @@ const Alist = () => {
                 <h3>{post.title}</h3>
               </a>
             </Link>
-            <div>{post.date}</div>
+            <DateDiv>{post.date}</DateDiv>
           </Wrapper>
         );
       })}
@@ -30,11 +30,19 @@ const Alist = () => {
 };
 
 const Wrapper = styled.div`
-  display: flex;
+  display: grid;
+  grid-template-columns: 8fr 2fr;
   width: 90%;
-  border: 1px solid red;
+  padding: 0 5px;
+  border: 1px solid black;
+  border-radius: 10px;
   margin: 10px auto 10px auto;
-  justify-content: space-around;
+  box-sizing: border-box;
+`;
+const DateDiv = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
 `;
 
 export default Alist;

@@ -4,17 +4,12 @@ import styled from 'styled-components';
 import { postList } from '../store/recoil';
 import { useRouter } from 'next/router';
 import { useCallback } from 'react';
-//import { posts } from '../store/posts.json';
 
 const DetailContent = () => {
   const [posts, setPosts] = useRecoilState(postList);
   const postId = Number(useRouter().query.id);
   const { currentPost } = useRouter().query;
   const post = JSON.parse(currentPost);
-
-  //console.log
-  // console.log(posts[postId]?.id);
-  // console.log(postId);
 
   const handlePostDelete = useCallback(() => {
     setPosts(posts.filter((post: any) => Number(post.id) !== postId));
@@ -52,18 +47,22 @@ const DetailContent = () => {
 export default DetailContent;
 
 const ContentBox = styled.div`
+  border: 2px dotted red;
   margin: auto;
   border: 0.08rem solid #c2bbbb;
-  width: 30rem;
+  width: 90%;
   height: 20rem;
 `;
 
 const Content = styled.div`
   display: flex;
   flex-direction: column;
+  border: 1px solid red;
 `;
 
 const PostTitle = styled.div``;
 const PostContent = styled.div``;
 const PostDate = styled.div``;
-const Buttons = styled.div``;
+const Buttons = styled.div`
+  display: flex;
+`;
