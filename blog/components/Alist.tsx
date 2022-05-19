@@ -7,7 +7,7 @@ const Alist = () => {
   const posts = useRecoilValue(postList);
   return (
     <>
-      {posts.map((post) => {
+      {posts?.map((post) => {
         return (
           <Wrapper>
             <Link

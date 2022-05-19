@@ -5,7 +5,7 @@ export const postList = atom({
   default: initPost.posts,
 });
 
-export const test = atom({
-  key: 'test',
-  default: 3,
+export const postNum = atom({
+  key: 'postNum',
+  default: 0,
 });
