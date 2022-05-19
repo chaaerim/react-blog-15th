@@ -9,7 +9,11 @@ import { useCallback } from 'react';
 const DetailContent = () => {
   const [posts, setPosts] = useRecoilState(postList);
   const postId = Number(useRouter().query.id);
+  const { currentPost } = useRouter().query;
+  const post = JSON.parse(currentPost);
 
+  console.log(posts[postId]?.id);
+  console.log(postId);
   const handlePostDelete = useCallback(() => {
     setPosts(posts.filter((post: any) => Number(post.id) !== postId));
   }, [posts]);
@@ -17,12 +21,18 @@ const DetailContent = () => {
   return (
     <ContentBox>
       <Content>
-        <PostTitle> {posts[postId]?.title}</PostTitle>
-        <PostContent>{posts[postId]?.content}</PostContent>
-        <PostDate> {posts[postId]?.date}</PostDate>
+        <PostTitle> {post.title}</PostTitle>
+        <PostContent>{post.content}</PostContent>
+        <PostDate> {post.date}</PostDate>
       </Content>
       <Buttons>
-        <Link href={`/edit/${postId}`}>
+        <Link
+          href={{
+            pathname: `/edit/${post.id}`,
+            query: { currentPost: JSON.stringify(post) },
+          }}
+          as={`/edit/${post.id}`}
+        >
           <a>
             <button>수정</button>
           </a>

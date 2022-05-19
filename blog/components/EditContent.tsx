@@ -9,6 +9,8 @@ const EditContent = () => {
   const [posts, setPosts] = useRecoilState(postList);
   const { textinput, handleInputChange, handleInputInitialize } = useInput('');
   const postId = Number(useRouter().query.id);
+  const { currentPost } = useRouter().query;
+  const post = JSON.parse(currentPost);
 
   const handlePostChange = (e: any) => {
     setPosts({ ...posts, [e.currentTarget.name]: e.currentTarget.value });
@@ -49,13 +51,13 @@ const EditContent = () => {
       <FormStyle action="">
         <input
           onChange={handlePostChange}
-          value={posts[postId].title}
+          value={post.title}
           name="postTitle"
           type="text"
         />
         <textarea
           onChange={handlePostChange}
-          value={posts[postId].content}
+          value={post.content}
           name="postContent"
           id=""
         ></textarea>
