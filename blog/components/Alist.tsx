@@ -5,7 +5,6 @@ import Link from 'next/link';
 
 const Alist = () => {
   const posts = useRecoilValue(postList);
-  console.log(posts);
   return (
     <>
       {posts.map((post) => {

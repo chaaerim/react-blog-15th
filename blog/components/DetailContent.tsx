@@ -12,8 +12,10 @@ const DetailContent = () => {
   const { currentPost } = useRouter().query;
   const post = JSON.parse(currentPost);
 
+  //console.log
   console.log(posts[postId]?.id);
   console.log(postId);
+
   const handlePostDelete = useCallback(() => {
     setPosts(posts.filter((post: any) => Number(post.id) !== postId));
   }, [posts]);
