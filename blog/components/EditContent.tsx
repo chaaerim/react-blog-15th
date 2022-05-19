@@ -1,45 +1,67 @@
 import Link from 'next/link';
 import { useRouter } from 'next/router';
-import React, { Component } from 'react';
+import React, { Component, useCallback, useState } from 'react';
 import { useRecoilState } from 'recoil';
 import styled from 'styled-components';
 import useInput from '../hooks/useInput';
-import { postList } from '../store/recoil';
-
+import { postList, postNum } from '../store/recoil';
+import moment from 'moment';
 const EditContent = () => {
-  const [posts, setPosts] = useRecoilState(postList);
-  const { textinput, handleInputChange, handleInputInitialize } = useInput('');
-  const postId = Number(useRouter().query.id);
-  const { currentPost } = useRouter().query;
-  const post = JSON.parse(currentPost);
+  const now = moment();
+  const router = useRouter();
+  const { id } = router.query;
 
-  const handlePostChange = (e: any) => {
-    console.log(e.currentTarget.value);
-    console.log(e.currentTarget.name);
-    setPosts({ ...posts, [e.currentTarget.name]: e.target.value });
-    console.log(posts);
+  const [posts, setPosts] = useRecoilState(postList);
+  const [postNumber, setPostNumber] = useRecoilState(postNum);
+  const [prevPost] = posts.filter((post) => post.id === Number(id));
+
+  const [title, setTitle] = useState(prevPost?.title);
+  const [contents, setContents] = useState(prevPost?.contents);
+
+  const onChangeTitleArea = useCallback(
+    (e: React.ChangeEvent<HTMLInputElement>): void => {
+      setTitle(e.target.value);
+    },
+    [title]
+  );
+  const onChangeTextArea = useCallback(
+    (e: React.ChangeEvent<HTMLInputElement>): void => {
+      setContents(e.target.value);
+    },
+    [contents]
+  );
+
+  const onSubmitEdit = useCallback((e: React.SyntheticEvent): void => {
+    e.preventDefault();
+    const date = getDate();
+
+    const obj = {
+      id: Number(id),
+      title,
+      contents,
+      date,
+    };
+
+    setPosts([...posts, obj]);
+    setContents('');
+    router.push('/');
+  }, []);
+  const getDate = () => {
+    return now.format().slice(5, 10);
   };
-  console.log(posts[postId]?.content);
 
   return (
     <>
       <div>글 수정하는 곳</div>
-      <FormStyle>
+      <FormStyle onSubmit={onSubmitEdit}>
         <input
-          onChange={handlePostChange}
-          value={post.title}
+          value={title}
           name="title"
+          onChange={onChangeTitleArea}
           type="text"
         />
-        <textarea
-          onChange={handlePostChange}
-          value={post.content}
-          name="content"
-          id=""
-        />
-        <Link href="/">
-          <button>수정</button>
-        </Link>
+        <textarea value={contents} name="content" onChange={onChangeTextArea} />
+        <button>수정</button>
       </FormStyle>
       <div>
         수정 누르면 다시 홈으로 이동하고 수정한 내용은 홈에 적용되어 있음.
@@ -50,7 +72,7 @@ const EditContent = () => {
 
 export default EditContent;
 
-const FormStyle = styled.div`
+const FormStyle = styled.form`
   display: flex;
   flex-direction: column;
   width: 80%;
