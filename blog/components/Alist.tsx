@@ -1,19 +1,21 @@
-import { postList } from "../store/recoil";
-import { useRecoilValue } from "recoil";
-import styled from "styled-components";
-import Link from "next/link";
+import { postList } from '../store/recoil';
+import { useRecoilValue } from 'recoil';
+import styled from 'styled-components';
+import Link from 'next/link';
 
 const Alist = () => {
-  const posts= useRecoilValue(postList);
+  const posts = useRecoilValue(postList);
   return (
     <>
-      {posts.map((post, i) => {
+      {posts.map((post) => {
         return (
           <Wrapper>
-            <Link href={{
-              pathname: `/get/${post.id}`,
-              query: {post: JSON.stringify(post)}
-              }}>
+            <Link
+              href={{
+                pathname: `/get/${post.id}`,
+              }}
+              key={post.id}
+            >
               <a>
                 <h3>{post.title}</h3>
               </a>

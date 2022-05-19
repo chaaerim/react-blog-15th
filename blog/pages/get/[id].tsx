@@ -1,12 +1,13 @@
-import AppLayout from "../../components/AppLayout";
-import Link from "next/link";
-import DetailContent from "../../components/DetailContent";
+import AppLayout from '../../components/AppLayout';
+import Link from 'next/link';
+import DetailContent from '../../components/DetailContent';
 
-const Get = () => {
+const Get = (key: number) => {
+  console.log(key);
   return (
     <>
       <AppLayout>
-      <DetailContent/>
+        <DetailContent />
       </AppLayout>
     </>
   );
