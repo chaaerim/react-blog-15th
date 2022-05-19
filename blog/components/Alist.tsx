@@ -5,6 +5,7 @@ import Link from 'next/link';
 
 const Alist = () => {
   const posts = useRecoilValue(postList);
+  console.log(posts);
   return (
     <>
       {posts.map((post) => {
@@ -13,8 +14,9 @@ const Alist = () => {
             <Link
               href={{
                 pathname: `/get/${post.id}`,
+                query: { currentPost: JSON.stringify(post) },
               }}
-              key={post.id}
+              as={`/get/${post.id}`}
             >
               <a>
                 <h3>{post.title}</h3>
