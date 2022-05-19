@@ -12,12 +12,10 @@ const EditContent = () => {
   const { id } = router.query;
 
   const [posts, setPosts] = useRecoilState(postList);
-  const [postNumber, setPostNumber] = useRecoilState(postNum);
   const [prevPost] = posts.filter((post) => post.id === Number(id));
 
   const [title, setTitle] = useState(prevPost?.title);
   const [contents, setContents] = useState(prevPost?.contents);
-  const [testObj, setTestObj] = useState({});
 
   const onChangeTitleArea = useCallback(
     (e: React.ChangeEvent<HTMLInputElement>): void => {
@@ -43,9 +41,7 @@ const EditContent = () => {
         contents,
         date,
       };
-
       setPosts(posts.map((post) => (post.id === Number(id) ? obj : post)));
-
       setContents('');
       router.push('/');
     },
@@ -54,13 +50,9 @@ const EditContent = () => {
   const getDate = () => {
     return now.format().slice(5, 10);
   };
-  useEffect(() => {
-    console.log(testObj);
-  }, [title, contents, testObj]);
 
   return (
     <>
-      <div>글 수정하는 곳</div>
       <FormStyle onSubmit={onSubmitEdit}>
         <input
           value={title}
@@ -71,9 +63,6 @@ const EditContent = () => {
         <textarea value={contents} name="content" onChange={onChangeTextArea} />
         <button>수정</button>
       </FormStyle>
-      <div>
-        수정 누르면 다시 홈으로 이동하고 수정한 내용은 홈에 적용되어 있음.
-      </div>
     </>
   );
 };
@@ -83,6 +72,6 @@ export default EditContent;
 const FormStyle = styled.form`
   display: flex;
   flex-direction: column;
-  width: 80%;
+  width: 90%;
   margin: auto;
 `;
