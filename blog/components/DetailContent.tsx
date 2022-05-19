@@ -24,7 +24,7 @@ const DetailContent = () => {
     <ContentBox>
       <Content>
         <PostTitle> {post.title}</PostTitle>
-        <PostContent>{post.content}</PostContent>
+        <PostContent>{post.contents}</PostContent>
         <PostDate> {post.date}</PostDate>
       </Content>
       <Buttons>

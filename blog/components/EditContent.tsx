@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import { useRouter } from 'next/router';
-import React, { Component, useCallback, useState } from 'react';
+import React, { Component, useCallback, useEffect, useState } from 'react';
 import { useRecoilState } from 'recoil';
 import styled from 'styled-components';
 import useInput from '../hooks/useInput';
@@ -17,6 +17,7 @@ const EditContent = () => {
 
   const [title, setTitle] = useState(prevPost?.title);
   const [contents, setContents] = useState(prevPost?.contents);
+  const [testObj, setTestObj] = useState({});
 
   const onChangeTitleArea = useCallback(
     (e: React.ChangeEvent<HTMLInputElement>): void => {
@@ -31,24 +32,31 @@ const EditContent = () => {
     [contents]
   );
 
-  const onSubmitEdit = useCallback((e: React.SyntheticEvent): void => {
-    e.preventDefault();
-    const date = getDate();
+  const onSubmitEdit = useCallback(
+    (e: React.SyntheticEvent): void => {
+      e.preventDefault();
+      const date = getDate();
 
-    const obj = {
-      id: Number(id),
-      title,
-      contents,
-      date,
-    };
+      const obj = {
+        id: Number(id),
+        title,
+        contents,
+        date,
+      };
 
-    setPosts([...posts, obj]);
-    setContents('');
-    router.push('/');
-  }, []);
+      setPosts(posts.map((post) => (post.id === Number(id) ? obj : post)));
+
+      setContents('');
+      router.push('/');
+    },
+    [title, contents]
+  );
   const getDate = () => {
     return now.format().slice(5, 10);
   };
+  useEffect(() => {
+    console.log(testObj);
+  }, [title, contents, testObj]);
 
   return (
     <>
