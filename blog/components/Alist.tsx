@@ -14,7 +14,9 @@ const Alist = () => {
             <Link
               href={{
                 pathname: `/get/${post.id}`,
-                query: { currentPost: JSON.stringify(post) },
+                query: {
+                  currentPost: JSON.stringify(post),
+                },
               }}
               as={`/get/${post.id}`}
             >
