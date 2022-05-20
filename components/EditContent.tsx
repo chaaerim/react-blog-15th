@@ -50,7 +50,7 @@ const EditContent = () => {
         setContents('');
         router.push('/');
       } else {
-        alert('제목을 입력해주세요!');
+        alert('제목을 입력해주세요');
       }
     },
     [title, contents]
