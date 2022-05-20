@@ -11,6 +11,7 @@ const DetailContent = () => {
   const [posts, setPosts] = useRecoilState(postList);
   const postId = Number(useRouter().query.id);
   const { currentPost } = useRouter().query;
+  //@ts-ignore
   const post = JSON.parse(currentPost);
 
   const handlePostDelete = useCallback(() => {
