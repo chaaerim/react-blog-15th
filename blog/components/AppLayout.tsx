@@ -2,6 +2,8 @@ import { FC } from 'react';
 import styled from 'styled-components';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
+import { AiOutlineHome } from 'react-icons/ai';
+import { HiOutlinePencil } from 'react-icons/hi';
 
 type Props = {
   children: React.ReactNode;
@@ -19,22 +21,35 @@ const AppLayout: FC<Props> = ({ children }) => {
             <>
               <Link href="/">
                 <a>
-                  <HomeBtn>홈</HomeBtn>
+                  <HomeBtn>
+                    <AiOutlineHome size={16} />
+                    Home
+                  </HomeBtn>
                 </a>
               </Link>
               <Link href="/post">
-                <PostBtn>글쓰기</PostBtn>
+                <PostBtn>
+                  <HiOutlinePencil size={16} />
+                  Post
+                </PostBtn>
               </Link>
             </>
           ) : (
             <>
               <Link href="/">
                 <a>
-                  <HomeBtn>홈</HomeBtn>
+                  <HomeBtn>
+                    <AiOutlineHome size={16} />
+                    Home
+                  </HomeBtn>
                 </a>
               </Link>
               <Link href="/post">
-                <PostBtn post>글쓰기</PostBtn>
+                <PostBtn post>
+                  {' '}
+                  <HiOutlinePencil size={16} />
+                  Post
+                </PostBtn>
               </Link>
             </>
           )}
@@ -46,6 +61,7 @@ const AppLayout: FC<Props> = ({ children }) => {
 };
 
 const Container = styled.div`
+  padding: 1rem;
   overflow: scroll;
   width: 500px;
   height: 500px;
@@ -60,12 +76,13 @@ const Navbar = styled.div`
   margin: auto;
 `;
 const HomeBtn = styled.button`
+  padding-right: 1rem;
   font-size: 20px;
   border: none;
   background: none;
   cursor: pointer;
   &:hover {
-    color: red;
+    color: #c2bbbb;
   }
 `;
 
@@ -75,7 +92,7 @@ const PostBtn = styled.button<{ post?: boolean }>`
   background: none;
   cursor: pointer;
   &:hover {
-    color: red;
+    color: #c2bbbb;
   }
   color: ${(props) => (props.post ? 'red' : 'black')};
 `;

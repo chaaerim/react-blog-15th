@@ -11,12 +11,25 @@ const GlobalStyle = createGlobalStyle`
         align-items: center;
         justify-content: center;
         height: 100vh;
-        font-family: 'Noto Sans KR', sans-serif;
         font-size: 10pt;
     }
-      a{
+
+    a{
         text-decoration-line: none;
       }
+
+      ::-webkit-scrollbar {
+    width: 0.9rem;
+    margin: 0;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    height: 17%;
+    background-color: #c2bbbb;
+    border-radius: 10px;
+    background-clip: padding-box;
+    border: 0.3rem solid transparent;
+  }
     
 `;
 
