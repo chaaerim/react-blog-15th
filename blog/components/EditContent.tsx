@@ -39,16 +39,19 @@ const EditContent = () => {
     (e: React.SyntheticEvent): void => {
       e.preventDefault();
       const date = getDate();
-
-      const obj = {
-        id: Number(id),
-        title,
-        contents,
-        date,
-      };
-      setPosts(posts.map((post) => (post.id === Number(id) ? obj : post)));
-      setContents('');
-      router.push('/');
+      if (title.length !== 0 && title.replace(/ /g, '').length !== 0) {
+        const obj = {
+          id: Number(id),
+          title,
+          contents,
+          date,
+        };
+        setPosts(posts.map((post) => (post.id === Number(id) ? obj : post)));
+        setContents('');
+        router.push('/');
+      } else {
+        alert('제목을 입력해주세요');
+      }
     },
     [title, contents]
   );

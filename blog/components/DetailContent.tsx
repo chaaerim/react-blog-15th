@@ -14,7 +14,7 @@ const DetailContent = () => {
   const post = JSON.parse(currentPost);
 
   const handlePostDelete = useCallback(() => {
-    setPosts(posts.filter((post: any) => Number(post.id) !== postId));
+    setPosts(posts.filter((post) => Number(post.id) !== postId));
   }, [posts]);
 
   return (
