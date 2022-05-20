@@ -36,16 +36,20 @@ const Post = () => {
       e.preventDefault();
       const date = getDate();
 
-      const obj = {
-        id: postNumber + 1,
-        title,
-        contents,
-        date,
-      };
-      setPostNumber((prev) => prev + 1);
-      setPosts([...posts, obj]);
-      setContents('');
-      router.push('/');
+      if (title.length !== 0 && title.replace(/ /g, '').length !== 0) {
+        const obj = {
+          id: postNumber + 1,
+          title,
+          contents,
+          date,
+        };
+        setPostNumber((prev) => prev + 1);
+        setPosts([...posts, obj]);
+        setContents('');
+        router.push('/');
+      } else {
+        alert('제목을 입력해주세요.');
+      }
     },
     [contents, title]
   );

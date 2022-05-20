@@ -23,6 +23,9 @@ const GlobalStyle = createGlobalStyle`
           color:#c2bbbb;
         }
       }
+      textarea {
+        resize: none;
+    }
 
     ::-webkit-scrollbar {
     width: 0.9rem;
