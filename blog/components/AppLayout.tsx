@@ -4,6 +4,7 @@ import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { AiOutlineHome } from 'react-icons/ai';
 import { HiOutlinePencil } from 'react-icons/hi';
+import React from 'react';
 
 type Props = {
   children: React.ReactNode;
@@ -88,4 +89,4 @@ const PostBtn = styled.button<{ post?: boolean }>`
   color: ${(props) => (props.post ? 'grey' : 'black')};
 `;
 
-export default AppLayout;
+export default React.memo(AppLayout);

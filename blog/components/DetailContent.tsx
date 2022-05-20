@@ -77,6 +77,7 @@ const PostTitle = styled.div`
   word-break: break-all;
 `;
 const PostContent = styled.div`
+  white-space: pre;
   padding: 0.5rem;
   font-size: 1rem;
   font-weight: lighter;

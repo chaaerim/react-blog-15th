@@ -1,10 +1,16 @@
-import Link from 'next/link';
 import { useRouter } from 'next/router';
-import React, { Component, useCallback, useEffect, useState } from 'react';
+import React, { useCallback, useState } from 'react';
 import { useRecoilState } from 'recoil';
-import styled from 'styled-components';
 import { postList } from '../store/recoil';
 import moment from 'moment';
+import { FiEdit } from 'react-icons/fi';
+import {
+  FormStyle,
+  StyledButton,
+  TextInput,
+  TitleInput,
+} from '../styles/CommonStyle';
+
 const EditContent = () => {
   const now = moment();
   const router = useRouter();
@@ -23,7 +29,7 @@ const EditContent = () => {
     [title]
   );
   const onChangeTextArea = useCallback(
-    (e: React.ChangeEvent<HTMLInputElement>): void => {
+    (e: React.ChangeEvent<HTMLTextAreaElement>): void => {
       setContents(e.target.value);
     },
     [contents]
@@ -51,26 +57,26 @@ const EditContent = () => {
   };
 
   return (
-    <>
-      <FormStyle onSubmit={onSubmitEdit}>
-        <input
+    <FormStyle onSubmit={onSubmitEdit}>
+      <>
+        <TitleInput
           value={title}
           name="title"
           onChange={onChangeTitleArea}
           type="text"
         />
-        <textarea value={contents} name="content" onChange={onChangeTextArea} />
-        <button>수정</button>
-      </FormStyle>
-    </>
+        <TextInput
+          value={contents}
+          name="content"
+          onChange={onChangeTextArea}
+        />
+      </>
+      <StyledButton>
+        <FiEdit />
+        수정
+      </StyledButton>
+    </FormStyle>
   );
 };
 
 export default EditContent;
-
-const FormStyle = styled.form`
-  display: flex;
-  flex-direction: column;
-  width: 90%;
-  margin: auto;
-`;

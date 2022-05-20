@@ -2,6 +2,7 @@ import { postList } from '../store/recoil';
 import { useRecoilValue } from 'recoil';
 import styled from 'styled-components';
 import Link from 'next/link';
+import React from 'react';
 
 const Alist = () => {
   const posts = useRecoilValue(postList);
@@ -52,4 +53,4 @@ const LinkToPost = styled(Link)`
   text-decoration: none;
   color: black;
 `;
-export default Alist;
+export default React.memo(Alist);

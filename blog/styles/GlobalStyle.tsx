@@ -41,6 +41,14 @@ const GlobalStyle = createGlobalStyle`
     border: none;
     background: none;
 }
+    input:focus{
+    outline: none;
+  }
+
+   textarea{
+     &:focus{
+    outline:none;
+  }}
   
     
 `;
