@@ -4,6 +4,8 @@ import styled from 'styled-components';
 import { postList } from '../store/recoil';
 import { useRouter } from 'next/router';
 import { useCallback } from 'react';
+import { FiEdit } from 'react-icons/fi';
+import { FiTrash2 } from 'react-icons/fi';
 
 const DetailContent = () => {
   const [posts, setPosts] = useRecoilState(postList);
@@ -20,7 +22,7 @@ const DetailContent = () => {
       <Content>
         <PostTitle> {post.title}</PostTitle>
         <PostContent>{post.contents}</PostContent>
-        <PostDate> {post.date}</PostDate>
+        <PostDate> 작성일 : {post.date}</PostDate>
       </Content>
       <Buttons>
         <Link
@@ -31,12 +33,18 @@ const DetailContent = () => {
           as={`/edit/${post.id}`}
         >
           <a>
-            <button>수정</button>
+            <button>
+              <FiEdit />
+              수정
+            </button>
           </a>
         </Link>
         <Link href="/">
           <a>
-            <button onClick={handlePostDelete}>삭제</button>
+            <button onClick={handlePostDelete}>
+              <FiTrash2 />
+              삭제
+            </button>
           </a>
         </Link>{' '}
       </Buttons>
@@ -47,22 +55,41 @@ const DetailContent = () => {
 export default DetailContent;
 
 const ContentBox = styled.div`
-  border: 2px dotted red;
   margin: auto;
-  border: 0.08rem solid #c2bbbb;
   width: 90%;
-  height: 20rem;
+  height: 26rem;
 `;
 
 const Content = styled.div`
+  margin: 0.5rem;
   display: flex;
   flex-direction: column;
-  border: 1px solid red;
+  border: 0.08rem solid #c2bbbb;
+  border-radius: 1rem;
+  height: 26rem;
 `;
 
-const PostTitle = styled.div``;
-const PostContent = styled.div``;
-const PostDate = styled.div``;
+const PostTitle = styled.div`
+  padding: 0.5rem;
+  font-size: 1.5rem;
+  border-bottom: 0.08rem solid #c2bbbb;
+  font-weight: lighter;
+  word-break: break-all;
+`;
+const PostContent = styled.div`
+  white-space: pre;
+  padding: 0.5rem;
+  font-size: 1rem;
+  font-weight: lighter;
+  word-break: break-all;
+  overflow: auto;
+`;
+const PostDate = styled.div`
+  margin: auto 0.5rem 0 auto;
+  color: #afaaaa;
+`;
 const Buttons = styled.div`
   display: flex;
+  justify-content: flex-end;
+  font-size: 0.9rem;
 `;

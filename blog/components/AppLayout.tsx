@@ -2,6 +2,9 @@ import { FC } from 'react';
 import styled from 'styled-components';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
+import { AiOutlineHome } from 'react-icons/ai';
+import { HiOutlinePencil } from 'react-icons/hi';
+import React from 'react';
 
 type Props = {
   children: React.ReactNode;
@@ -19,22 +22,35 @@ const AppLayout: FC<Props> = ({ children }) => {
             <>
               <Link href="/">
                 <a>
-                  <HomeBtn>홈</HomeBtn>
+                  <HomeBtn>
+                    <AiOutlineHome size={16} />
+                    Home
+                  </HomeBtn>
                 </a>
               </Link>
               <Link href="/post">
-                <PostBtn>글쓰기</PostBtn>
+                <PostBtn>
+                  <HiOutlinePencil size={16} />
+                  Post
+                </PostBtn>
               </Link>
             </>
           ) : (
             <>
               <Link href="/">
                 <a>
-                  <HomeBtn>홈</HomeBtn>
+                  <HomeBtn>
+                    <AiOutlineHome size={16} />
+                    Home
+                  </HomeBtn>
                 </a>
               </Link>
               <Link href="/post">
-                <PostBtn post>글쓰기</PostBtn>
+                <PostBtn post>
+                  {' '}
+                  <HiOutlinePencil size={16} />
+                  Post
+                </PostBtn>
               </Link>
             </>
           )}
@@ -46,10 +62,10 @@ const AppLayout: FC<Props> = ({ children }) => {
 };
 
 const Container = styled.div`
+  padding: 1rem;
   overflow: scroll;
   width: 500px;
   height: 500px;
-  border: 1px solid black;
   border-radius: 10px;
   -webkit-box-shadow: 5px 5px 15px 0px #000000;
   box-shadow: 5px 5px 15px 0px #000000;
@@ -60,24 +76,17 @@ const Navbar = styled.div`
   margin: auto;
 `;
 const HomeBtn = styled.button`
+  padding-right: 1rem;
   font-size: 20px;
   border: none;
   background: none;
-  cursor: pointer;
-  &:hover {
-    color: red;
-  }
 `;
 
 const PostBtn = styled.button<{ post?: boolean }>`
   font-size: 20px;
   border: none;
   background: none;
-  cursor: pointer;
-  &:hover {
-    color: red;
-  }
-  color: ${(props) => (props.post ? 'red' : 'black')};
+  color: ${(props) => (props.post ? 'grey' : 'black')};
 `;
 
-export default AppLayout;
+export default React.memo(AppLayout);

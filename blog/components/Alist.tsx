@@ -2,6 +2,7 @@ import { postList } from '../store/recoil';
 import { useRecoilValue } from 'recoil';
 import styled from 'styled-components';
 import Link from 'next/link';
+import React from 'react';
 
 const Alist = () => {
   const posts = useRecoilValue(postList);
@@ -17,9 +18,7 @@ const Alist = () => {
               }}
               as={`/get/${post.id}`}
             >
-              <a>
-                <h3>{post.title}</h3>
-              </a>
+              <LinkToPost>{post.title}</LinkToPost>
             </Link>
             <DateDiv>{post.date}</DateDiv>
           </Wrapper>
@@ -33,16 +32,26 @@ const Wrapper = styled.div`
   display: grid;
   grid-template-columns: 8fr 2fr;
   width: 90%;
-  padding: 0 5px;
+  padding: 0 1rem;
   border: 1px solid black;
-  border-radius: 10px;
+  border-radius: 0.5rem;
   margin: 10px auto 10px auto;
   box-sizing: border-box;
+  word-break: break-all;
 `;
 const DateDiv = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+  color: #afaaaa;
 `;
 
+const LinkToPost = styled.a`
+  padding: 0.5rem;
+  display: flex;
+  text-decoration: none;
+  color: black;
+  font-size: 1.2rem;
+  font-weight: lighter;
+`;
 export default Alist;

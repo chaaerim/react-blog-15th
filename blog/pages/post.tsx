@@ -1,10 +1,16 @@
 import AppLayout from '../components/AppLayout';
-import styled from 'styled-components';
 import { useCallback, useState } from 'react';
 import { useRouter } from 'next/router';
 import { useRecoilState } from 'recoil';
 import { postList, postNum } from '../store/recoil';
 import moment from 'moment';
+import { HiOutlinePencil } from 'react-icons/hi';
+import {
+  FormStyle,
+  StyledButton,
+  TextInput,
+  TitleInput,
+} from '../styles/CommonStyle';
 
 const Post = () => {
   const now = moment();
@@ -50,30 +56,27 @@ const Post = () => {
   return (
     <>
       <AppLayout>
-        <FromStyle onSubmit={handleForm}>
-          <input
+        <FormStyle onSubmit={handleForm}>
+          <TitleInput
             type="text"
             onChange={onChangeTitleArea}
-            placeholder="글 제목"
+            placeholder="제목을 입력하세요 . . ."
             value={title}
+            required
           />
-          <textarea
+          <TextInput
             onChange={onChangeTextArea}
             value={contents}
             id=""
-            placeholder="글 내용"
-          ></textarea>
-          <button>글 작성</button>
-        </FromStyle>
+            placeholder="내용을 입력하세요 . . ."
+          />
+          <StyledButton>
+            <HiOutlinePencil />글 작성
+          </StyledButton>
+        </FormStyle>
       </AppLayout>
     </>
   );
 };
 
-const FromStyle = styled.form`
-  display: flex;
-  flex-direction: column;
-  width: 90%;
-  margin: auto;
-`;
 export default Post;
