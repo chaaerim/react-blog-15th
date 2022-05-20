@@ -33,16 +33,23 @@ const Wrapper = styled.div`
   display: grid;
   grid-template-columns: 8fr 2fr;
   width: 90%;
-  padding: 0 5px;
+  padding: 0 1rem;
   border: 1px solid black;
   border-radius: 10px;
   margin: 10px auto 10px auto;
   box-sizing: border-box;
+  word-break: break-all;
 `;
 const DateDiv = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+  color: #afaaaa;
 `;
 
+const LinkToPost = styled(Link)`
+  display: flex;
+  text-decoration: none;
+  color: black;
+`;
 export default Alist;

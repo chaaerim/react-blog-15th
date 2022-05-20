@@ -3,8 +3,7 @@ import { useRouter } from 'next/router';
 import React, { Component, useCallback, useEffect, useState } from 'react';
 import { useRecoilState } from 'recoil';
 import styled from 'styled-components';
-import useInput from '../hooks/useInput';
-import { postList, postNum } from '../store/recoil';
+import { postList } from '../store/recoil';
 import moment from 'moment';
 const EditContent = () => {
   const now = moment();

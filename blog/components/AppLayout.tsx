@@ -65,7 +65,6 @@ const Container = styled.div`
   overflow: scroll;
   width: 500px;
   height: 500px;
-  border: 1px solid black;
   border-radius: 10px;
   -webkit-box-shadow: 5px 5px 15px 0px #000000;
   box-shadow: 5px 5px 15px 0px #000000;
@@ -80,21 +79,13 @@ const HomeBtn = styled.button`
   font-size: 20px;
   border: none;
   background: none;
-  cursor: pointer;
-  &:hover {
-    color: #c2bbbb;
-  }
 `;
 
 const PostBtn = styled.button<{ post?: boolean }>`
   font-size: 20px;
   border: none;
   background: none;
-  cursor: pointer;
-  &:hover {
-    color: #c2bbbb;
-  }
-  color: ${(props) => (props.post ? 'red' : 'black')};
+  color: ${(props) => (props.post ? 'grey' : 'black')};
 `;
 
 export default AppLayout;

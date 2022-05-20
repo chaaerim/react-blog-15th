@@ -1,8 +1,10 @@
 import { createGlobalStyle } from 'styled-components';
 import { normalize } from 'styled-normalize';
+
 const GlobalStyle = createGlobalStyle`
   
   ${normalize}
+
   
     body {
         margin: 0px;
@@ -18,18 +20,28 @@ const GlobalStyle = createGlobalStyle`
         text-decoration-line: none;
       }
 
-      ::-webkit-scrollbar {
+    ::-webkit-scrollbar {
     width: 0.9rem;
     margin: 0;
-  }
+   }
 
-  ::-webkit-scrollbar-thumb {
+    ::-webkit-scrollbar-thumb {
     height: 17%;
     background-color: #c2bbbb;
     border-radius: 10px;
     background-clip: padding-box;
     border: 0.3rem solid transparent;
-  }
+    }
+
+    button {
+      &:hover{
+      cursor: pointer;
+      color: #c2bbbb;
+    }
+    border: none;
+    background: none;
+}
+  
     
 `;
 
