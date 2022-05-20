@@ -11,27 +11,31 @@ const DetailContent = () => {
   const [posts, setPosts] = useRecoilState(postList);
   const postId = Number(useRouter().query.id);
   const { currentPost } = useRouter().query;
-  //@ts-ignore
-  const post = JSON.parse(currentPost);
+
+  let post;
+  if (typeof currentPost === 'string') {
+    post = JSON.parse(currentPost);
+  }
+
 
   const handlePostDelete = useCallback(() => {
-    setPosts(posts.filter((post) => Number(post.id) !== postId));
+    setPosts(posts.filter((post) => Number(post?.id) !== postId));
   }, [posts]);
 
   return (
     <ContentBox>
       <Content>
-        <PostTitle> {post.title}</PostTitle>
-        <PostContent>{post.contents}</PostContent>
-        <PostDate> 작성일 : {post.date}</PostDate>
+        <PostTitle> {post?.title}</PostTitle>
+        <PostContent>{post?.contents}</PostContent>
+        <PostDate> 작성일 : {post?.date}</PostDate>
       </Content>
       <Buttons>
         <Link
           href={{
-            pathname: `/edit/${post.id}`,
+            pathname: `/edit/${post?.id}`,
             query: { currentPost: JSON.stringify(post) },
           }}
-          as={`/edit/${post.id}`}
+          as={`/edit/${post?.id}`}
         >
           <a>
             <button>
