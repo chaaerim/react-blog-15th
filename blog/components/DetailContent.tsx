@@ -11,10 +11,12 @@ const DetailContent = () => {
   const [posts, setPosts] = useRecoilState(postList);
   const postId = Number(useRouter().query.id);
   const { currentPost } = useRouter().query;
+
   let post;
   if (typeof currentPost === 'string') {
     post = JSON.parse(currentPost);
   }
+
 
   const handlePostDelete = useCallback(() => {
     setPosts(posts.filter((post) => Number(post?.id) !== postId));
@@ -80,7 +82,7 @@ const PostTitle = styled.div`
   word-break: break-all;
 `;
 const PostContent = styled.div`
-  white-space: pre;
+  white-space: pre-line;
   padding: 0.5rem;
   font-size: 1rem;
   font-weight: lighter;
