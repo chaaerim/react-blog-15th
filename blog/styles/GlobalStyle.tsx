@@ -18,6 +18,10 @@ const GlobalStyle = createGlobalStyle`
 
     a{
         text-decoration-line: none;
+        &:hover{
+          cursor:pointer;
+          color:#c2bbbb;
+        }
       }
 
     ::-webkit-scrollbar {
